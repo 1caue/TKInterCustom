@@ -13,7 +13,7 @@ root.title('Login')
 
 def comando1(c1, c2, main):
     messagebox.showinfo('Em Andamento...','Logando na sua conta...', icon='info')
-    sleep(3)
+    sleep(1.5)
     hotkey(c1, c2)
     main.destroy()
 
