@@ -25,7 +25,7 @@ def search():
     py.write(f'Crie um artigo sobre o/a {ent1.get()} com no maximo 30 linhas')
     py.press('enter')
     
-    sleep(15)
+    sleep(19)
     py.scroll(-800)
 
     sleep(1)
@@ -57,8 +57,12 @@ root = CTk(fg_color="grey")
 root.geometry("500x350")
 root.title('Artigos')
 
-lbl = CTkLabel(root, text='Criador de Artigos', font=("Arial", 30), corner_radius=162, bg_color='grey', text_color='#ffffff')
-lbl.place(rely=0.03, relx=0.27)
+f = CTkFrame(root, width=700, height=60, fg_color='#515151', corner_radius=0)
+f.place(rely=1, relx=1)
+f.pack()
+
+lbl = CTkLabel(f, text='Criador de Artigos', font=("Arial", 30), corner_radius=162, text_color='#ffffff')
+lbl.place(rely=0.2, relx=0.24)
 
 lbl1 = CTkLabel(root, text='Assunto do artigo: ', text_color='white', font=("Arial", 20))
 lbl1.place(rely=0.18, relx=0.15)
@@ -82,4 +86,4 @@ closebt.place(rely=0.85, relx=0.05)
 
 root.mainloop()
 
-'incompleto'
+'Finalizado!'
