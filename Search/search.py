@@ -86,4 +86,4 @@ closebt.place(rely=0.85, relx=0.05)
 
 root.mainloop()
 
-'Finalizado!'
+'Finalizado!!'
