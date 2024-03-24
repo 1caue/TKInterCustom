@@ -20,7 +20,7 @@ def search():
     sleep(1)
     
     py.press('enter')
-    sleep(3)
+    sleep(5)
 
     py.write(f'Crie um artigo sobre o/a {ent1.get()} com no maximo 30 linhas')
     py.press('enter')
