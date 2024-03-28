@@ -1,6 +1,6 @@
 from customtkinter import *
-from time import sleep
 from tkinter import messagebox
+import sys
 
 app = CTk(fg_color='#D3D3D3')
 app.geometry('320x180')
@@ -8,7 +8,7 @@ app.title('Cronômetro')
 
 # Def
 def cron():
-        global s, m, h
+        global s, m, h, cron_id
         s += 1
         if s >= 60:
             m += 1
@@ -21,37 +21,36 @@ def cron():
                 lbl1.configure(text=f'{h:02}')
             lbl2.configure(text=f':{m:02}')
         lbl3.configure(text=f':{s:02}')
-        lbl3.after(1000, cron)  
-        if not stop_flag:
-             lbl3.after(100000, cron)
-
+        lbl3.after(100000, cron)  
+        cron_id = lbl3.after(1000, cron)
+       
 def start_cron():
-    global stop_flag, a
+    global stop_flag, cron_id
     stop_flag = False
-    a += 1
-    if a == 1:
-        cron()       
-    else:
-        messagebox.showinfo('Atenção!', 'O Cronômetro já iniciado!', icon='info')  
+    cron_id = lbl3.after(0, cron)
 
-def stop():
-    global stop_flag
-    stop_flag = True
+def stop_cron():
+     global stop_flag, h
+     stop_flag = True
+     lbl3.after_cancel(cron_id)
 
+     
 def reset():
      global s, m, h
-     s = 0
-     m = 0
-     h = 0
-     lbl1.configure(text='00')
-     lbl2.configure(text=':00')
-     lbl3.configure(text=':00')   
+     if messagebox.askyesno('Recomeçar', 'Tem certeza que Deseja Recomeçar o Cronômetro?'):
+        s = 0
+        m = 0
+        h = 0
+        lbl1.configure(text='00')
+        lbl2.configure(text=':00')
+        lbl3.configure(text=':00')   
+        stop_cron()
 
 # Butons
 bt1 = CTkButton(app, text='Comecar', fg_color='#8C8C8C', hover_color='#272727', border_color='black', width=100, border_width=1, command=start_cron)
 bt1.place(relx=0.01, rely=0.8)
 
-bt2 = CTkButton(app, text='Parar', fg_color='#8C8C8C', hover_color='red', border_color='black', width=104, border_width=1, command=stop)
+bt2 = CTkButton(app, text='Parar', fg_color='#8C8C8C', hover_color='red', border_color='black', width=104, border_width=1, command=stop_cron)
 bt2.place(relx=0.34, rely=0.8) 
 
 bt3 = CTkButton(app, text='Recomeçar', fg_color='#8C8C8C', hover_color='#272727', border_color='black', width=100, border_width=1, command=reset)
@@ -68,10 +67,12 @@ lbl3 = CTkLabel(app, text=':00', text_color='black', font=('Arial', 50))
 lbl3.place(relx=0.58, rely=0.3)
 
 stop_flag = False
+stop_cron.cron_id = None
 
-a = 0
 s = 0
 m = 0
 h = 0
 
 app.mainloop()
+
+'Finalizado!'
