@@ -6,7 +6,7 @@ def calculator():
   try:
     global a
     a = 2024 - int(ent.get()) 
-    lb3.configure(text=f'{a} Anos')
+    lb3.configure(text=f'Aproximadamente {a} Anos')
     f = 0
     
     for a in range(0, a):
@@ -32,7 +32,7 @@ lbl1.place(relx=0.2, rely=0.2)
 lb2 = CTkLabel(main, text='Digite o Ano que você nasceu:', font=("Arial", 20), text_color='White')
 lb2.place(relx=0.1, rely=0.25)
 
-lb3 = CTkLabel(main, text='-------', font=('Arial', 20))
+lb3 = CTkLabel(main, text='--------------', font=('Arial', 20))
 lb3.pack(anchor='s', expand=True, pady=10)
 lb3.place(rely=0.50, relx=0.1)
 
