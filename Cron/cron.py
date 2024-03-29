@@ -1,6 +1,5 @@
 from customtkinter import *
 from tkinter import messagebox
-import sys
 
 app = CTk(fg_color='#D3D3D3')
 app.geometry('320x180')
