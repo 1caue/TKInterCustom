@@ -1,12 +1,17 @@
 from customtkinter import *
 from random import randint
 from PIL import Image
+from time import sleep
 
 def pedra():
     global cont, contp
     itens = ('Pedra', 'Papel', 'Tesoura')
     pc = randint(0, 2)
     sort = (itens[pc])
+    sleep(0.1)
+    paper.configure(fg_color='grey')
+    scissors.configure(fg_color='grey')
+    rock.configure(fg_color='#1e528c')
     if sort == 'Pedra':
         lb3.configure(text='O Computador também jogou Pedra')
         lb4.configure(text='Empate!')
@@ -28,6 +33,11 @@ def papel():
     items = ('Pedra', 'Papel', 'Tesoura')
     pc = randint(0, 2)
     sort = (items[pc])
+    sleep(0.1)
+    scissors.configure(fg_color='grey')
+    rock.configure(fg_color='grey')
+    paper.configure(fg_color='#1e528c')
+    
     if sort == 'Pedra':
         lb3.configure(text='O Computador jogou Pedra')
         lb4.configure(text='Você Ganhou!')
@@ -49,6 +59,11 @@ def tesoura():
     items = ('Pedra', 'Papel', 'Tesoura')
     pc = randint(0, 2)
     sort = (items[pc])
+    sleep(0.1)
+    scissors.configure(fg_color='#1e528c')
+    rock.configure(fg_color='grey')
+    paper.configure(fg_color='grey')
+
     if sort == 'Pedra':
         lb3.configure(text='O computador jogou Pedra')
         lb4.configure(text='O computador Ganhou!')
@@ -103,7 +118,7 @@ lb4.place(relx=0.01, rely=0.65)
 lb5 = CTkLabel(game, text='Contador de Vitórias: 0', text_color='black', font=('Arial', 15), bg_color='white', width=231)
 lb5.place(relx=0, rely=0.91)
  
-lb6 = CTkLabel(game, text='Contador de Derrotas: 0', text_color='black', font=('Arial', 15), bg_color='red', width=211)
+lb6 = CTkLabel(game, text='Contador de Derrotas: 0', text_color='black', font=('Arial', 15), bg_color='red', width=221)
 lb6.place(relx=0.52, rely=0.91)
 
 cont = 0
